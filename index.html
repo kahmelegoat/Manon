@@ -3,704 +3,546 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MODAL M - Transport express, logistique et affrètement depuis 2010. Solutions sur mesure avec des valeurs humaines à Collégien.">
-    <meta name="keywords" content="transport express, logistique, affrètement, Collégien, entreprise transport, livraison urgente">
-    <title>MODAL M - Transport & Logistique Express | Depuis 2010</title>
+    <title>Manon Mateos - Infirmière à Brie-Comte-Robert</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#ED8936', // orange
-                        secondary: '#78350F', // marron foncé
-                        light: '#FEF3C7', // beige clair
-                        dark: '#1E293B', // bleu marine
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .hero-bg {
-            background-image: linear-gradient(rgba(30, 41, 59, 0.8), rgba(120, 53, 15, 0.8)), url('https://images.unsplash.com/photo-1609974209355-0a9426d7e8c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
         }
-        .card-hover {
+        
+        .nav-link:hover {
+            color: #3B82F6;
             transition: all 0.3s ease;
         }
-        .card-hover:hover {
+        
+        .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
         }
-        .nav-link {
-            position: relative;
+        
+        .btn-primary {
+            background-color: #3B82F6;
+            transition: all 0.3s ease;
         }
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #ED8936;
-            transition: width 0.3s ease;
+        
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
         }
-        .nav-link:hover:after {
-            width: 100%;
+
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            animation: pulse 2s infinite;
         }
-        .animate-bounce-slow {
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
             50% {
-                transform: translateY(-10px);
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
             }
         }
     </style>
 </head>
-<body class="font-sans text-dark bg-white">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#home" class="flex items-center">
-                <div class="bg-primary p-2 rounded-lg mr-2">
-                    <i class="fas fa-truck text-white text-xl"></i>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-heartbeat text-3xl text-blue-500 mr-3"></i>
+                    <h1 class="text-2xl font-bold text-blue-500">Manon Mateos</h1>
                 </div>
-                <span class="text-2xl font-bold text-secondary">MODAL <span class="text-primary">M</span></span>
-            </a>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link font-medium text-secondary hover:text-primary">Accueil</a>
-                <a href="#about" class="nav-link font-medium text-secondary hover:text-primary">À propos</a>
-                <a href="#services" class="nav-link font-medium text-secondary hover:text-primary">Services</a>
-                <a href="#team" class="nav-link font-medium text-secondary hover:text-primary">Équipe</a>
-                <a href="#news" class="nav-link font-medium text-secondary hover:text-primary">Actualités</a>
-                <a href="#contact" class="nav-link font-medium text-secondary hover:text-primary">Contact</a>
-            </nav>
-            
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-secondary focus:outline-none">
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#accueil" class="nav-link text-gray-700 font-medium">Accueil</a>
+                    <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
+                    <a href="#apropos" class="nav-link text-gray-700 font-medium">À propos</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+                </nav>
+                
+                <button class="md:hidden text-gray-700 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="nav-link font-medium text-secondary hover:text-primary">Accueil</a>
-                <a href="#about" class="nav-link font-medium text-secondary hover:text-primary">À propos</a>
-                <a href="#services" class="nav-link font-medium text-secondary hover:text-primary">Services</a>
-                <a href="#team" class="nav-link font-medium text-secondary hover:text-primary">Équipe</a>
-                <a href="#news" class="nav-link font-medium text-secondary hover:text-primary">Actualités</a>
-                <a href="#contact" class="nav-link font-medium text-secondary hover:text-primary">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">Les valeurs s'échangent, <span class="text-primary">nous transportons</span> les vôtres en urgence.</h1>
-                <p class="text-xl md:text-2xl mb-10">Expert en transport express, logistique et affrètement depuis 2010 à Collégien. Des solutions sur mesure avec des valeurs humaines.</p>
-                <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="#services" class="bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
-                        <i class="fas fa-arrow-right mr-2"></i> Nos services
+    <section id="accueil" class="relative py-20 bg-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    Soins infirmiers à domicile <br>
+                    <span class="text-blue-500">à Brie-Comte-Robert</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8">
+                    Manon Mateos,diplômée d'état, vous propose des soins personnalisés 
+                    et professionnels dans le confort de votre domicile.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="btn-primary text-white px-8 py-3 rounded-full font-medium shadow-lg">
+                        Prendre rendez-vous
                     </a>
-                    <a href="#contact" class="bg-transparent hover:bg-white hover:text-secondary text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300">
-                        <i class="fas fa-paper-plane mr-2"></i> Demander un devis
+                    <a href="#services" class="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-full font-medium">
+                        Nos services
                     </a>
                 </div>
             </div>
-            
-            <div class="mt-20 animate-bounce-slow">
-                <a href="#about" class="text-white">
-                    <i class="fas fa-chevron-down text-2xl"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-light">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold">Depuis 2010</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Notre histoire, nos valeurs</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-            </div>
-            
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-secondary mb-6">Fondée en 2010 à Collégien</h3>
-                        <p class="text-gray-700 mb-6">MODAL M a été créée le 17 février 2010 par M. Valery Delgado avec une vision claire : révolutionner le transport express en y intégrant des valeurs humaines souvent absentes dans ce secteur.</p>
-                        <p class="text-gray-700 mb-6">Depuis notre siège à Collégien (77), nous avons développé une expertise reconnue dans trois domaines complémentaires : le transport express, la logistique et l'affrètement.</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                            <div class="bg-white p-4 rounded-lg border border-primary border-opacity-20 text-center">
-                                <div class="text-primary text-3xl mb-3">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                                <h4 class="font-bold text-secondary">Bienveillance</h4>
-                                <p class="text-gray-600 text-sm mt-2">Écoute active et respect de chacun</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-primary border-opacity-20 text-center">
-                                <div class="text-primary text-3xl mb-3">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h4 class="font-bold text-secondary">Humanité</h4>
-                                <p class="text-gray-600 text-sm mt-2">Relations authentiques et durables</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-primary border-opacity-20 text-center">
-                                <div class="text-primary text-3xl mb-3">
-                                    <i class="fas fa-lightbulb"></i>
-                                </div>
-                                <h4 class="font-bold text-secondary">Adaptabilité</h4>
-                                <p class="text-gray-600 text-sm mt-2">Solutions personnalisées</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f2c8fde3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Équipe MODAL M" class="rounded-xl shadow-xl w-full">
-                        <div class="absolute -bottom-6 -right-6 bg-primary text-white p-6 rounded-xl shadow-lg hidden md:block">
-                            <div class="text-4xl font-bold">13+</div>
-                            <div class="text-sm">ans d'expérience</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-10 bg-secondary text-white p-6 rounded-xl shadow-lg">
-                        <h3 class="text-xl font-bold mb-4">Notre engagement</h3>
-                        <p class="mb-4">Nous nous engageons à offrir des solutions de transport et logistique personnalisées, avec une expertise centrée sur la qualité et l'expérience client.</p>
-                        <div class="flex items-center space-x-4">
-                            <a href="#" class="text-white hover:text-primary transition">
-                                <i class="fab fa-linkedin text-2xl"></i>
-                            </a>
-                            <span>Découvrez notre activité sur LinkedIn</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                     alt="Infirmière souriante" 
+                     class="rounded-lg shadow-xl w-full h-auto max-w-md mx-auto">
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-primary font-semibold">Nos expertises</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Services sur mesure</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Des solutions adaptées à chaque besoin, avec la réactivité et le professionnalisme qui nous caractérisent.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <div class="h-48 bg-gradient-to-r from-secondary to-primary flex items-center justify-center">
-                        <i class="fas fa-bolt text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-3">Transport Express</h3>
-                        <p class="text-gray-600 mb-4">Prise en charge rapide des envois urgents avec une livraison garantie dans les délais les plus courts, 24h/24 et 7j/7.</p>
-                        <ul class="space-y-2 mb-4">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Livraison express en J+1</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Suivi en temps réel</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Service 24/7</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <div class="h-48 bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                        <i class="fas fa-warehouse text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-3">Solutions Logistiques</h3>
-                        <p class="text-gray-600 mb-4">Gestion complète de votre supply chain avec des solutions d'entreposage, de préparation de commandes et de gestion des flux.</p>
-                        <ul class="space-y-2 mb-4">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Entrepôts sécurisés</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Gestion des stocks</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Préparation de commandes</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <div class="h-48 bg-gradient-to-r from-secondary to-primary flex items-center justify-center">
-                        <i class="fas fa-ship text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary mb-3">Affrètement</h3>
-                        <p class="text-gray-600 mb-4">Organisation de transports pour des besoins spécifiques avec une gestion complète du processus et des moyens adaptés.</p>
-                        <ul class="space-y-2 mb-4">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Transport exceptionnel</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Gestion administrative</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-primary mr-2"></i>
-                                <span>Solutions sur mesure</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            En savoir plus <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-16 text-center">
-                <a href="#contact" class="inline-block bg-primary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">
-                    <i class="fas fa-envelope mr-2"></i> Demander un devis personnalisé
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="py-20 bg-light">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold">L'équipe</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Nos experts à votre service</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Une équipe pluridisciplinaire dédiée à répondre à vos besoins avec professionnalisme et réactivité.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Membre 1 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden text-center">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Valery Delgado" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary">Valery Delgado</h3>
-                        <p class="text-primary font-semibold mb-3">Fondateur & Directeur</p>
-                        <p class="text-gray-600 text-sm">À l'origine de MODAL M en 2010, Valery dirige l'entreprise avec une vision stratégique et un engagement sans faille.</p>
-                        <div class="mt-4 flex justify-center space-x-3">
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Membre 2 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden text-center">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Sophie Martin" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary">Sophie Martin</h3>
-                        <p class="text-primary font-semibold mb-3">Responsable Logistique</p>
-                        <p class="text-gray-600 text-sm">15 ans d'expérience dans la gestion des flux et l'optimisation des chaînes logistiques pour nos clients.</p>
-                        <div class="mt-4 flex justify-center space-x-3">
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Membre 3 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden text-center">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Thomas Leroy" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary">Thomas Leroy</h3>
-                        <p class="text-primary font-semibold mb-3">Responsable Transport</p>
-                        <p class="text-gray-600 text-sm">Expert en organisation des flux transport et gestion d'une flotte de 30 véhicules adaptés à chaque besoin.</p>
-                        <div class="mt-4 flex justify-center space-x-3">
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Membre 4 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden text-center">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Amélie Dubois" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-secondary">Amélie Dubois</h3>
-                        <p class="text-primary font-semibold mb-3">Responsable Clientèle</p>
-                        <p class="text-gray-600 text-sm">Votre interlocutrice privilégiée pour toutes vos demandes, avec une réponse garantie sous 2 heures.</p>
-                        <div class="mt-4 flex justify-center space-x-3">
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-secondary hover:text-primary transition">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-16 text-center">
-                <p class="text-gray-600 mb-6">Rejoignez notre équipe de plus de 40 collaborateurs passionnés</p>
-                <a href="#contact" class="inline-block bg-secondary hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 shadow-lg">
-                    <i class="fas fa-briefcase mr-2"></i> Nos offres d'emploi
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-primary font-semibold">Actualités</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Nos dernières nouvelles</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Restez informés de notre actualité, des évolutions du secteur et découvrez nos conseils experts.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Mes <span class="text-blue-500">Services</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Des soins adaptés à vos besoins, réalisés avec professionnalisme et bienveillance.
+                </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1609974209355-0a9426d7e8c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Nouveaux véhicules" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span>15 juin 2023</span>
-                            <span class="mx-2">•</span>
-                            <span class="text-primary">Transport</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Modernisation de notre flotte express</h3>
-                        <p class="text-gray-600 mb-4">Nous avons investi dans 15 nouveaux véhicules plus écologiques pour renforcer notre capacité de transport express.</p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            Lire l'article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-syringe text-blue-500 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Injections et perfusions</h3>
+                    <p class="text-gray-600">
+                        Administration de médicaments par voie intraveineuse, intramusculaire ou sous-cutanée à domicile.
+                    </p>
                 </div>
                 
-                <!-- Article 2 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Optimisation logistique" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span>2 mai 2023</span>
-                            <span class="mx-2">•</span>
-                            <span class="text-primary">Logistique</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">5 conseils pour optimiser vos stocks</h3>
-                        <p class="text-gray-600 mb-4">Découvrez nos recommandations pour une gestion des stocks plus efficace et moins coûteuse.</p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            Lire l'article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-band-aid text-blue-500 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Pansements complexes</h3>
+                    <p class="text-gray-600">
+                        Soins de plaies post-opératoires, ulcères, escarres avec des techniques et matériels adaptés.
+                    </p>
                 </div>
                 
-                <!-- Article 3 -->
-                <div class="card-hover bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="Salon transport" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span>10 avril 2023</span>
-                            <span class="mx-2">•</span>
-                            <span class="text-primary">Événement</span>
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Surveillance médicale</h3>
+                    <p class="text-gray-600">
+                        Contrôle des constantes (tension, glycémie, saturation), évaluation de l'état général du patient.
+                    </p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-procedures text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Soins post-opératoires</h3>
+                    <p class="text-gray-600">
+                        Accompagnement après une intervention chirurgicale pour une récupération optimale à domicile.
+                    </p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-pills text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Gestion des traitements</h3>
+                    <p class="text-gray-600">
+                        Aide à la prise médicamenteuse, préparation des piluliers et éducation thérapeutique.
+                    </p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Consultation infirmière</h3>
+                    <p class="text-gray-600">
+                        Bilan de santé, conseils en prévention et éducation à la santé adaptés à vos besoins.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                         alt="Manon Mateos infirmière" 
+                         class="rounded-lg shadow-xl w-full h-auto max-w-md mx-auto">
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                        À propos de <span class="text-blue-500">Manon Mateos</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Diplômée d'État en soins infirmiers depuis 2024, j'exerce avec passion mon métier 
+                        à Brie-Comte-Robert et ses environs. Mon expérience en milieu hospitalier et en 
+                        libéral me permet d'offrir des soins de qualité adaptés à chaque patient.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <p class="text-gray-700">
+                                <span class="font-semibold">Formation continue :</span> Régulièrement formée aux nouvelles techniques de soins
+                            </p>
                         </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Retour sur le Salon Transport & Logistique</h3>
-                        <p class="text-gray-600 mb-4">MODAL M était présent au salon professionnel pour présenter ses innovations et rencontrer ses partenaires.</p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-orange-600 transition">
-                            Lire l'article <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <p class="text-gray-700">
+                                <span class="font-semibold">Approche humaine :</span> Écoute active et relation de confiance avec mes patients
+                            </p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
+                            <p class="text-gray-700">
+                                <span class="font-semibold">Disponibilité :</span> Interventions rapides selon vos besoins et urgences
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-phone-alt text-blue-500 mr-3 text-xl"></i>
+                        <div>
+                            <p class="text-gray-600">Disponible 7j/7 sur rendez-vous</p>
+                            <a href="tel:+33123456789" class="text-blue-500 font-semibold text-lg">07 67 14 44 98</a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Témoignages de <span class="text-blue-500">patients</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Ce que disent les patients qui ont bénéficié de mes soins
+                </p>
+            </div>
             
-            <div class="mt-12 text-center">
-                <a href="#" class="inline-block bg-white hover:bg-gray-50 text-secondary font-bold py-3 px-8 rounded-lg border border-gray-200 transition duration-300 shadow">
-                    <i class="fas fa-newspaper mr-2"></i> Voir toutes les actualités
-                </a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "Manon est une infirmière exceptionnelle, à l'écoute et très professionnelle. Ses soins sont toujours réalisés avec une grande douceur et précision."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Marie D.</h4>
+                            <p class="text-sm text-gray-500">Brie-Comte-Robert</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "Après mon opération, les visites de Manon ont été un vrai réconfort. Ses conseils et son professionnalisme ont grandement facilité ma convalescence."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Pierre L.</h4>
+                            <p class="text-sm text-gray-500">Servon</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "Nous faisons appel à Manon pour les soins de ma mère âgée. Elle est toujours ponctuelle, patiente et extrêmement compétente. Nous lui faisons entièrement confiance."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sophie G.</h4>
+                            <p class="text-sm text-gray-500">Lieusaint</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-secondary text-white">
-        <div class="container mx-auto px-4">
+    <section id="contact" class="py-20 bg-blue-500 text-white">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-primary font-semibold">Nous contacter</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Prêts à transporter vos valeurs</h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
-                <p class="text-gray-300 max-w-2xl mx-auto mt-4">Une question, un projet ? Notre équipe est à votre disposition pour répondre à toutes vos demandes.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Prendre <span class="text-white">rendez-vous</span>
+                </h2>
+                <p class="text-lg max-w-2xl mx-auto">
+                    Contactez-moi pour discuter de vos besoins en soins infirmiers à domicile
+                </p>
             </div>
             
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold mb-6">Coordonnées</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-4 text-xl"></i>
                             <div>
-                                <label for="name" class="block font-medium mb-2">Nom complet *</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <h4 class="font-semibold mb-1">Zone d'intervention</h4>
+                                <p>Brie-Comte-Robert et communes alentours</p>
                             </div>
-                            
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-4 text-xl"></i>
                             <div>
-                                <label for="company" class="block font-medium mb-2">Entreprise</label>
-                                <input type="text" id="company" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <h4 class="font-semibold mb-1">Téléphone</h4>
+                                <a href="tel:+33123456789" class="hover:underline">07 67 14 44 98</a>
                             </div>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-4 text-xl"></i>
                             <div>
-                                <label for="email" class="block font-medium mb-2">Email *</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <a href="mailto:contact@manonmateos-infirmiere.fr" class="hover:underline">contact@manonmateos-infirmiere.fr</a>
                             </div>
-                            
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-4 text-xl"></i>
                             <div>
-                                <label for="phone" class="block font-medium mb-2">Téléphone *</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="service" class="block font-medium mb-2">Service concerné *</label>
-                            <select id="service" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                                <option value="">Sélectionnez un service</option>
-                                <option value="transport">Transport Express</option>
-                                <option value="logistique">Solutions Logistiques</option>
-                                <option value="affretement">Affrètement</option>
-                                <option value="autre">Autre demande</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block font-medium mb-2">Message *</label>
-                            <textarea id="message" rows="5" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-primary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
-                            <i class="fas fa-paper-plane mr-2"></i> Envoyer le message
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg h-full">
-                        <h3 class="text-2xl font-bold mb-6">Nos coordonnées</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-map-marker-alt text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-1">Adresse</h4>
-                                    <p>5 allée Jean Monnet<br>77090 Collégien, France</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-phone text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-1">Téléphone</h4>
-                                    <p>+33 1 23 45 67 89</p>
-                                    <p class="text-sm text-gray-400 mt-1">Lun-Ven: 8h-18h / Sam: 9h-12h</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-envelope text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-1">Email</h4>
-                                    <p>contact@modalm.com</p>
-                                    <p class="text-sm text-gray-400 mt-1">Réponse sous 24h</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-share-alt text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg mb-4">Réseaux sociaux</h4>
-                                    <div class="flex space-x-4">
-                                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full transition duration-300">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full transition duration-300">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full transition duration-300">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white p-3 rounded-full transition duration-300">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-bold text-lg mb-4">Localisation</h4>
-                            <div class="bg-gray-900 rounded-xl overflow-hidden">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2629.869118736493!2d2.673815315672993!3d48.83451017928194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e61b1b3d0d0a7f%3A0x40b82c3688b3e10!2s5%20All%C3%A9e%20Jean%20Monnet%2C%2077090%20Coll%C3%A9gien!5e0!3m2!1sfr!2sfr!4v1686754326782!5m2!1sfr!2sfr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <h4 class="font-semibold mb-1">Horaires</h4>
+                                <p>Lundi au Vendredi : 8h - 20h</p>
+                                <p>Week-end : Urgences uniquement</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="font-semibold text-xl mb-4">Suivez-moi</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-white rounded-lg shadow-xl p-8 text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6">Formulaire de contact</h3>
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Téléphone</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-600 transition duration-300">
+                            Envoyer le message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Legal Info -->
-    <section class="py-10 bg-gray-900 text-gray-400">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p class="text-sm">MODAL M © 2023 - Tous droits réservés</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-heartbeat text-3xl text-blue-500 mr-3"></i>
+                        <h2 class="text-2xl font-bold">Manon Mateos</h2>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">
+                        Infirmière diplômée d'état à Brie-Comte-Robert, proposant des soins à domicile personnalisés et professionnels.
+                    </p>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-6 text-sm">
-                    <div>SIREN: 520 835 976</div>
-                    <div>SIRET: 520 835 976 00066</div>
-                    <div>Code NAF/APE: 52.29A</div>
-                    <div>Capital social: 100 000 €</div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Services</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Soins à domicile</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Pansements</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Injections</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Surveillance</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Liens utiles</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#accueil" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                            <li><a href="#apropos" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Légal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Mentions légales</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Politique de confidentialité</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">CGU</a></li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2023 Manon Mateos - Tous droits réservés
+                </p>
                 
-                <div class="mt-4 md:mt-0">
-                    <a href="#" class="text-sm hover:text-primary transition">Mentions légales</a>
-                    <span class="mx-2">•</span>
-                    <a href="#" class="text-sm hover:text-primary transition">Politique de confidentialité</a>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-500 text-white rounded-full shadow-lg flex items-center justify-center hidden">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                mobileMenu.classList.add('hidden');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
         // Back to Top Button
-        const backToTopButton = document.getElementById('back-to-top');
+        const backToTopButton = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
+                backToTopButton.classList.remove('hidden');
             } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.add('hidden');
             }
         });
         
         backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
         
-        // Form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                // Here you would typically send the form data to a server
-                // For this example, we'll just show a success message
-                
-                // Create success message
-                const successMessage = document.createElement('div');
-                successMessage.className = 'bg-green-600 text-white p-4 rounded-lg mb-6';
-                successMessage.innerHTML = `
-                    <div class="flex items-center">
-                        <i class="fas fa-check-circle mr-2"></i>
-                        <span>Merci pour votre message ! Nous vous contacterons dans les plus brefs délais.</span>
-                    </div>
-                `;
-                
-                // Insert before form
-                contactForm.parentNode.insertBefore(successMessage, contactForm);
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Scroll to success message
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-                
-                // Remove message after 5 seconds
-                setTimeout(() => {
-                    successMessage.remove();
-                }, 5000);
-            });
-        }
+        // Mobile menu toggle (would need additional implementation)
+        const mobileMenuButton = document.querySelector('.md\\:hidden');
+        mobileMenuButton.addEventListener('click', () => {
+            alert("Menu mobile à implémenter");
+        });
     </script>
 </body>
 </html>
